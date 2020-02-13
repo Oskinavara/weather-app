@@ -16,6 +16,9 @@ const store = new Vuex.Store({
           `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=b48493f02664a91b20a3fd845b9f9ff3`
         )
         .then(res => {
+          if (state.weather) {
+            state.searchHistory = [...state.searchHistory, state.weather];
+          }
           state.weather = res.data;
         })
         .catch(err => {
@@ -36,21 +39,36 @@ const store = new Vuex.Store({
         });
     },
     setLocation(state, coords) {
-      state.location.latitude = coords.latitude;
-      state.location.longitude = coords.longitude;
+      console.log(coords);
+      state.location = {
+        latitude: coords.latitude,
+        longitude: coords.longitude
+      };
     }
   },
-  actions: {
-    getWeatherByCoords({ commit }, coords) {
-      commit("getWeatherByCoords", coords);
+  getters: {
+    temperatureCelsius(state) {
+      return (state.weather.main.temp - 273.15).toFixed().toString() + "°C";
     },
-    getWeatherByCity({ commit }, city) {
-      commit("getWeatherByCity", city);
-    },
-    setLocation({ commit }, coords) {
-      commit("setLocation", coords);
+    temperatureFahrenheit(state) {
+      return (
+        ((state.weather.main.temp * 9) / 5 - 459.67).toFixed().toString() + "°C"
+      );
     }
   }
+  // actions: {
+  //   getWeatherByCoords({ commit, state }, coords) {
+  //     commit("getWeatherByCoords", coords).then(() => {
+  //       commit("setLocation", state.weather.weather.coords);
+  //     });
+  //   },
+  //   getWeatherByCity({ commit }, city) {
+  //     commit("getWeatherByCity", city);
+  //   },
+  //   setLocation({ commit }, coords) {
+  //     commit("setLocation", coords);
+  //   }
+  // }
 });
 
 export default store;
