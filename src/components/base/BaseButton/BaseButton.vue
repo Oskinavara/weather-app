@@ -1,0 +1,13 @@
+<template>
+  <button class="base-button" @click="$emit('click')">
+    <slot />
+  </button>
+</template>
+
+<script>
+export default {
+  name: "BaseButton"
+};
+</script>
+
+<style lang="scss" scoped src='./BaseButton.scss' />
