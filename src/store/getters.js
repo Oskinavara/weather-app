@@ -7,8 +7,11 @@ const getters = {
     } else
       return state.weather
         ? (state.weather.main.temp * (9 / 5) - 459.67).toFixed().toString() +
-            "F"
+        "F"
         : "";
+  },
+  city(state) {
+    return state.weather.name;
   },
   pressure(state) {
     return state.weather ? state.weather.main.pressure.toString() + "hPa" : "";

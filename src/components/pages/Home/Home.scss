@@ -1,0 +1,10 @@
+.home {
+  background: $background;
+  text-align: center;
+  &__temperature {
+    font-size: 160px;
+    font-weight: 100;
+    color: $textgrey;
+
+  }
+}
