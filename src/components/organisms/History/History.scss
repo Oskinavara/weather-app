@@ -3,5 +3,7 @@
   height: 25vh;
   position: absolute;
   bottom: 0;
+  display: flex;
+  flex-direction: column-reverse;
   overflow-y: auto;
 }

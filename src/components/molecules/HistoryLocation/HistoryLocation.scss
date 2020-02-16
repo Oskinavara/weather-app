@@ -4,10 +4,12 @@
   background: $lightblue;
   padding: 0 1.5rem;
   border: 1px solid $textgrey;
-  border-bottom: none;
-
+  border-top: none;
+  position: relative;
+  cursor: pointer;
+  
   &:last-of-type {
-  border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
   }
 
   &__wrapper {

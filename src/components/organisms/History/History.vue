@@ -1,9 +1,10 @@
 <template>
-  <div class="history">
+  <div class="history" ref="history">
     <HistoryLocation
       v-for="(location, index) in searchHistory"
       :key="index"
       :location="location"
+      @click.native="getWeatherByCity(location.name)"
     />
   </div>
 </template>
@@ -18,6 +19,19 @@ export default {
   },
   computed: {
     ...mapState(['searchHistory'])
+  },
+  watch: {
+    searchHistory() {
+      let history = this.$refs.history;
+      this.$nextTick(() => {
+        history.scrollTop = 0;
+      });
+    }
+  },
+  methods: {
+    getWeatherByCity(city) {
+      this.$store.commit('getWeatherByCity', city);
+    }
   }
 };
 </script>
