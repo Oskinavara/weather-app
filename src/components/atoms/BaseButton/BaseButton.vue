@@ -8,7 +8,9 @@
       :src="src"
       :alt="alt"
     />
-    <span v-if="action === 'unit'" class="base-button__text">{{ buttonText }}</span>
+    <span v-if="action === 'unit'" class="base-button__text">
+      {{ buttonText }}
+    </span>
   </button>
 </template>
 

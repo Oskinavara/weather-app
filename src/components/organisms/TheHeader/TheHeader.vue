@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import BaseInput from "@/components/atoms/BaseInput/BaseInput.vue";
-import BaseButton from "@/components/atoms/BaseButton/BaseButton.vue";
+import BaseInput from '@/components/atoms/BaseInput/BaseInput.vue';
+import BaseButton from '@/components/atoms/BaseButton/BaseButton.vue';
 
 export default {
-  name: "TheHeader",
+  name: 'TheHeader',
   data() {
     return {
-      city: ""
+      city: ''
     };
   },
   components: {

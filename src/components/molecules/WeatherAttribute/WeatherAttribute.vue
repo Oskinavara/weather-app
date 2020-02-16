@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "WeatherAttribute",
+  name: 'WeatherAttribute',
   props: {
     attribute: {
       type: Object,
