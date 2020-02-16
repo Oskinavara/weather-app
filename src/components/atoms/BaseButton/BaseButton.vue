@@ -8,9 +8,7 @@
       :src="src"
       :alt="alt"
     />
-    <span v-if="action === 'unit'" class="base-button__text">
-      {{ buttonText }}
-    </span>
+    <span v-if="action === 'unit'" class="base-button__text">{{ buttonText }}</span>
   </button>
 </template>
 
@@ -71,7 +69,14 @@ export default {
     handleClick() {
       if (this.action === 'search') {
         this.getWeatherByCity();
-      } else if (this.action === 'localize') {
+      } else if (this.action === 'localize' && 'geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            this.$store.commit('setLocation', pos.coords);
+            this.$store.commit('getWeatherByCoords', pos.coords);
+          },
+          errorObj => alert(errorObj.code + ': ' + errorObj.message)
+        );
         this.getWeatherByCoords();
       } else {
         this.changeUnitSystem();

@@ -1,8 +1,8 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import App from "./App.vue";
-import axios from "axios";
-import store from "./store/index.js";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import App from './App.vue';
+import axios from 'axios';
+import store from './store/index.js';
 
 Vue.prototype.$http = axios;
 
@@ -15,4 +15,4 @@ new Vue({
   render: function(h) {
     return h(App);
   }
-}).$mount("#app");
+}).$mount('#app');
