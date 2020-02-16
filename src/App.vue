@@ -1,14 +1,17 @@
 <template>
-  <div id="app">habababab</div>
+  <div id="app">
+    <Home />
+  </div>
 </template>
 
 <script>
+import Home from "@/components/pages/Home/Home.vue";
 export default {
   name: "App",
-
-  mounted() {}
+  components: {
+    Home
+  }
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss" src="@/style/index.scss" />

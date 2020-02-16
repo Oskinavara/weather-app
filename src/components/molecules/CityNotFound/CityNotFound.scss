@@ -1,0 +1,16 @@
+.city-not-found {
+  &__heading {
+    font-size: 18px;
+    font-weight: bold;
+    color: $textgrey;
+    padding: 50% 0 1rem 0;
+    letter-spacing: 1px;
+    line-height: 22px;
+  }
+
+  &__paragraph {
+    font-size: 14px;
+    color: $textgrey;
+    line-height: 20px;
+  }
+}
