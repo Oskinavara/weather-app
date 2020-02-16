@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 const mutations = {
   getWeatherByCoords(state, coords) {
     axios
@@ -9,10 +9,12 @@ const mutations = {
         if (state.weather) {
           state.searchHistory = [...state.searchHistory, state.weather];
         }
+        state.notFound = false;
         state.weather = res.data;
       })
       .catch(err => {
-        console.log("An error occured: ", err);
+        state.notFound = true;
+        console.log('An error occured: ', err);
       });
   },
   getWeatherByCity(state, city) {
@@ -22,23 +24,25 @@ const mutations = {
       )
       .then(res => {
         state.searchHistory = [...state.searchHistory, state.weather];
+        state.notFound = false;
         state.weather = res.data;
       })
       .catch(err => {
-        console.log("An error occured: ", err);
+        state.notFound = true;
+        console.log('An error occured: ', err);
       });
   },
   setLocation(state, coords) {
-    console.log(coords);
     state.location = {
+      ...state.location,
       latitude: coords.latitude,
       longitude: coords.longitude
     };
   },
-  changeMetricSystem(state) {
-    state.metricSystem === "Imperial"
-      ? (state.metricSystem = "Metric")
-      : (state.metricSystem = "Imperial");
+  changeUnitSystem(state) {
+    state.unitSystem === 'Imperial'
+      ? (state.unitSystem = 'Metric')
+      : (state.unitSystem = 'Imperial');
   }
 };
 

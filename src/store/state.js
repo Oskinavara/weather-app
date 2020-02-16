@@ -1,8 +1,9 @@
 const state = {
-  metricSystem: "Metric",
+  unitSystem: 'Metric',
   weather: null,
   searchHistory: [],
-  location: {}
+  location: {},
+  notFound: false
 };
 
 export default state;
