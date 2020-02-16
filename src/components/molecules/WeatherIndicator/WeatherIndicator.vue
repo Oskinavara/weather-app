@@ -1,13 +1,19 @@
 <template>
   <div class="weather-indicator">
-    <img class="weather-indicator__icon" :src="weatherIcon" alt="weather icon" />
-    <h2 class="weather-indicator__temperature">{{ $store.getters.temperature }}</h2>
+    <img
+      :src="weatherIcon"
+      alt="weather icon"
+      class="weather-indicator__icon"
+    />
+    <h2 class="weather-indicator__temperature">
+      {{ $store.getters.temperature }}
+    </h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: "WeatherIndicator",
+  name: 'WeatherIndicator',
   computed: {
     weatherIcon() {
       let weather = this.$store.state.weather;

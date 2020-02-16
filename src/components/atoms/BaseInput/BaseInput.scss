@@ -1,5 +1,6 @@
 .base-input {
   max-width: 24rem;
+  flex-shrink: 2;
 
   &__label {
     display: block;
@@ -7,7 +8,7 @@
     color: $textgrey;
     text-align: left;
     font-family: 'Open Sans';
-
+    padding-bottom: 0.5rem;
   }
 
   &__inner {
@@ -17,7 +18,8 @@
     padding: 1rem;
 
     &::placeholder {
-      font-size: 16px;
+      width: 100%;
+      font-size: 14px;
       font-family: 'Open Sans';
     }
   }

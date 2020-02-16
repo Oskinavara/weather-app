@@ -7,7 +7,7 @@ export default {
       localizeIcon: require("@/assets/icons/localize.svg"),
       fahrenheitIcon: require("@/assets/icons/fahrenheit.svg"),
       celsiusIcon: require("@/assets/icons/celsius.svg"),
-      searchIcon: require("@/assets/icons/search.svg"),
+      searchIcon: require("@/assets/icons/search.svg")
     };
   }
 };

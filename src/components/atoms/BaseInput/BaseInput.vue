@@ -2,9 +2,10 @@
   <div class="base-input">
     <label class="base-input__label" for="search">{{ inputLabel }}</label>
     <input
+      id="search"
       name="search"
       :type="inputType"
-      placeholder="Search for a location"
+      placeholder="Search"
       @input="updateValue($event.target.value)"
       @keyup.enter="handleKeyup"
       :label="inputLabel"
@@ -15,33 +16,38 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 export default {
-  name: "BaseInput",
+  name: 'BaseInput',
   props: {
     value: {
       type: String,
-      default: "",
+      default: '',
       required: true
     }
   },
   methods: {
     updateValue(value) {
-      this.$emit("input", value);
+      this.$emit('input', value);
     },
     handleKeyup() {
-      this.$store.commit("getWeatherByCity", this.value);
+      if (this.value) {
+        this.$store.commit('getWeatherByCity', this.value);
+      }
     }
   },
   computed: {
-    ...mapState(["location"]),
+    ...mapState(['location']),
     inputType() {
-      return isNaN(this.value[0]) ? "search" : "number";
+      return isNaN(this.value[0]) ? 'search' : 'number';
     },
     inputLabel() {
-      if (this.inputType === "number") {
-        return "Coordinates";
-      } else return "City Name";
+      if (!this.value) {
+        return 'City or Coordinates';
+      }
+      if (this.inputType === 'number') {
+        return 'Coordinates';
+      } else return 'City';
     }
   }
 };

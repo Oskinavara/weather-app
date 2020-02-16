@@ -1,10 +1,6 @@
 <template>
   <header class="header">
-    <BaseInput
-      @input="updateValue"
-      @keyup-enter="getWeatherByCity"
-      :value="city"
-    />
+    <BaseInput @input="updateValue" :value="city" />
     <BaseButton action="search" :city="city" />
     <BaseButton action="localize" />
     <BaseButton action="unit" />
