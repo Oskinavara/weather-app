@@ -7,7 +7,7 @@ const mutations = {
       )
       .then(res => {
         if (state.weather) {
-          state.searchHistory = [...state.searchHistory, state.weather];
+          state.searchHistory = [state.weather, ...state.searchHistory];
         }
         state.notFound = false;
         state.weather = res.data;

@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <div class="city-not-found">
     <h3 class="city-not-found__heading">
       We're sorry, we couldn't find your city.
@@ -8,9 +8,5 @@
     </p>
   </div>
 </template>
-
-<script>
-export default {};
-</script>
 
 <style lang="scss" scoped src="./CityNotFound.scss" />
