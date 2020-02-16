@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import Home from "@/components/pages/Home/Home.vue";
+import Home from '@/components/pages/Home/Home.vue';
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Home
   }
