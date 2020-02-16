@@ -4,7 +4,7 @@
     <input
       id="search"
       name="search"
-      :type="inputType"
+      type="search"
       placeholder="Search"
       @input="updateValue($event.target.value)"
       @keyup.enter="handleKeyup"
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
   name: 'BaseInput',
   props: {
@@ -37,7 +36,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(['location']),
     inputType() {
       return isNaN(this.value[0]) ? 'search' : 'number';
     },

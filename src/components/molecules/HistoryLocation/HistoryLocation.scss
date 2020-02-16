@@ -1,0 +1,37 @@
+.history-location {
+  display: flex;
+  align-items: center;
+  background: $lightblue;
+  padding: 0 1.5rem;
+  border: 1px solid $textgrey;
+  border-top: none;
+  position: relative;
+  cursor: pointer;
+  
+  &:last-of-type {
+    border-top: 1px solid #000;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    align-items: center;
+  }
+
+  &__city {
+    font-weight: 600;
+    font-size: 18px;
+    width: 50%;
+    text-align: left;
+  }
+
+  &__weather-icon {
+    width: 5rem;
+  }
+
+  &__temperature {
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+}

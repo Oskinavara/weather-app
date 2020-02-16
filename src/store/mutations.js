@@ -7,7 +7,12 @@ const mutations = {
       )
       .then(res => {
         if (state.weather) {
-          state.searchHistory = [...state.searchHistory, state.weather];
+          state.searchHistory.length === 5
+            ? (state.searchHistory = [
+                ...state.searchHistory.filter((el, index) => index !== 0),
+                state.weather
+              ])
+            : (state.searchHistory = [...state.searchHistory, state.weather]);
         }
         state.notFound = false;
         state.weather = res.data;
@@ -23,7 +28,14 @@ const mutations = {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b48493f02664a91b20a3fd845b9f9ff3`
       )
       .then(res => {
-        state.searchHistory = [...state.searchHistory, state.weather];
+        if (state.weather) {
+          state.searchHistory.length === 5
+            ? (state.searchHistory = [
+                ...state.searchHistory.filter((el, index) => index !== 0),
+                state.weather
+              ])
+            : (state.searchHistory = [...state.searchHistory, state.weather]);
+        }
         state.notFound = false;
         state.weather = res.data;
       })

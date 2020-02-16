@@ -1,16 +1,19 @@
 <template>
   <div class="home">
-    <Header />
-    <template v-if="!notFound">
-      <CityInformation />
-      <WeatherIndicator />
-      <WeatherAttribute
-        v-for="attribute in weatherAttributes"
-        :key="attribute.name"
-        :attribute="attribute"
-      />
-    </template>
-    <CityNotFound v-else />
+    <div class="home__wrapper">
+      <Header />
+      <template v-if="!notFound">
+        <CityInformation />
+        <WeatherIndicator />
+        <WeatherAttribute
+          v-for="attribute in weatherAttributes"
+          :key="attribute.name"
+          :attribute="attribute"
+        />
+      </template>
+      <CityNotFound v-else />
+    </div>
+    <History />
   </div>
 </template>
 
@@ -18,6 +21,7 @@
 import Header from '@/components/organisms/TheHeader/TheHeader.vue';
 import CityInformation from '@/components/molecules/CityInformation/CityInformation.vue';
 import CityNotFound from '@/components/molecules/CityNotFound/CityNotFound.vue';
+import History from '@/components/organisms/History/History.vue';
 import WeatherAttribute from '@/components/molecules/WeatherAttribute/WeatherAttribute.vue';
 import WeatherIndicator from '@/components/molecules/WeatherIndicator/WeatherIndicator.vue';
 import IconUrls from '@/logic/mixins/IconUrls.js';
@@ -28,21 +32,15 @@ export default {
   components: {
     Header,
     WeatherAttribute,
+    History,
     WeatherIndicator,
     CityInformation,
     CityNotFound
   },
   mixins: [IconUrls],
   computed: {
-    ...mapState([
-      'weather',
-      'location',
-      'searchHistory',
-      'unitSystem',
-      'notFound'
-    ]),
+    ...mapState(['notFound']),
     ...mapGetters([
-      'temperature',
       'pressure',
       'humidity',
       'windSpeed',
