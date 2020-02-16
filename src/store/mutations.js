@@ -29,16 +29,15 @@ const mutations = {
       });
   },
   setLocation(state, coords) {
-    console.log(coords);
     state.location = {
       latitude: coords.latitude,
       longitude: coords.longitude
     };
   },
-  changeMetricSystem(state) {
-    state.metricSystem === "Imperial"
-      ? (state.metricSystem = "Metric")
-      : (state.metricSystem = "Imperial");
+  changeUnitSystem(state) {
+    state.unitSystem === "Imperial"
+      ? (state.unitSystem = "Metric")
+      : (state.unitSystem = "Imperial");
   }
 };
 

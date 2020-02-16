@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -60,4 +62,16 @@ body {
 	box-sizing: inherit;
 	margin: 0;
 	padding: 0;
+}
+input {
+	&:focus {
+		outline: 0;
+		border: 2px solid $textgrey;
+	}
+}
+button {
+	&:focus {
+		outline: 0;
+		border: 2px solid $textgrey;
+	}
 }

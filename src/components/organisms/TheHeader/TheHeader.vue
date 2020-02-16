@@ -1,11 +1,19 @@
 <template>
   <header class="header">
-    <BaseInput :value="city" />
+    <BaseInput
+      @input="updateValue"
+      @keyup-enter="getWeatherByCity"
+      :value="city"
+    />
+    <BaseButton action="search" :city="city" />
+    <BaseButton action="localize" />
+    <BaseButton action="unit" />
   </header>
 </template>
 
 <script>
-import BaseInput from "@/components/base/BaseInput/BaseInput.vue";
+import BaseInput from "@/components/atoms/BaseInput/BaseInput.vue";
+import BaseButton from "@/components/atoms/BaseButton/BaseButton.vue";
 
 export default {
   name: "TheHeader",
@@ -15,10 +23,15 @@ export default {
     };
   },
   components: {
-    BaseInput
+    BaseInput,
+    BaseButton
+  },
+  methods: {
+    updateValue(value) {
+      this.city = value;
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped src="./TheHeader.scss" />

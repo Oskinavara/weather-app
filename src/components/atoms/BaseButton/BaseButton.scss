@@ -1,0 +1,22 @@
+.base-button {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: $lightblue;
+  border: none;
+  display: flex;
+  place-content: center;
+  border: 2px solid $darkblue;
+
+  &__icon {
+    width: 70%;
+  }
+
+  &__text {
+    position: absolute;
+    font-size: 8px;
+
+  }
+}

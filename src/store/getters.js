@@ -1,13 +1,12 @@
 const getters = {
   temperature(state) {
-    if (state.metricSystem === "Metric") {
+    if (state.unitSystem === "Metric") {
       return state.weather
         ? (state.weather.main.temp - 273.15).toFixed().toString() + "°C"
         : "";
     } else
       return state.weather
-        ? (state.weather.main.temp * (9 / 5) - 459.67).toFixed().toString() +
-        "F"
+        ? (state.weather.main.temp * (9 / 5) - 459.67).toFixed().toString() + "F"
         : "";
   },
   city(state) {
@@ -20,7 +19,7 @@ const getters = {
     return state.weather ? state.weather.main.humidity.toString() + "%" : "";
   },
   windSpeed(state) {
-    if (state.metricSystem === "Metric") {
+    if (state.unitSystem === "Metric") {
       return state.weather ? state.weather.wind.speed.toString() + "m/s" : "";
     } else
       return state.weather

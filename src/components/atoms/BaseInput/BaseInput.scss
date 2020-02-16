@@ -1,0 +1,24 @@
+.base-input {
+  max-width: 24rem;
+
+  &__label {
+    display: block;
+    font-size: 12px;
+    color: $textgrey;
+    text-align: left;
+    font-family: 'Open Sans';
+
+  }
+
+  &__inner {
+    height: 4rem;
+    width: 100%;
+    border: 2px solid $darkblue;
+    padding: 1rem;
+
+    &::placeholder {
+      font-size: 16px;
+      font-family: 'Open Sans';
+    }
+  }
+}

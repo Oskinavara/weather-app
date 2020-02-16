@@ -1,5 +1,5 @@
 const state = {
-  metricSystem: "Metric",
+  unitSystem: "Metric",
   weather: null,
   searchHistory: [],
   location: {}

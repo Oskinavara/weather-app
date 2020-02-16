@@ -1,13 +1,9 @@
 <template>
   <div class="home">
     <Header />
-    <p>{{ `Latitude: ${weather && weather.coord.lat}` }}</p>
-    <p>{{ `Longitude: ${weather && weather.coord.lon}` }}</p>
-    <BaseButton @click.native="getWeatherByCoords">Get weather by location</BaseButton>
-    <BaseButton @click.native="getWeatherByCity">Get weather by city</BaseButton>
+    <p>{{ `Latitude: ${weather && weather.coord && weather.coord.lat}` }}</p>
+    <p>{{ `Longitude: ${weather && weather.coord && weather.coord.lon}` }}</p>
     <WeatherIndicator />
-    <!-- <img :src="weatherIcon" alt="weather icon" />
-    <h2 class="home__temperature">{{ temperature }}</h2>-->
     <WeatherAttribute
       v-for="attribute in weatherAttributes"
       :key="attribute.name"
@@ -17,7 +13,6 @@
 </template>
 
 <script>
-import BaseButton from "@/components/base/BaseButton/BaseButton.vue";
 import Header from "@/components/organisms/TheHeader/TheHeader.vue";
 import WeatherAttribute from "@/components/molecules/WeatherAttribute/WeatherAttribute.vue";
 import WeatherIndicator from "@/components/molecules/WeatherIndicator/WeatherIndicator.vue";
@@ -27,14 +22,13 @@ import { mapState, mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {
-    BaseButton,
     Header,
     WeatherAttribute,
     WeatherIndicator
   },
   mixins: [IconUrls],
   computed: {
-    ...mapState(["weather", "location", "searchHistory", "metricSystem"]),
+    ...mapState(["weather", "location", "searchHistory", "unitSystem"]),
     ...mapGetters(["temperature", "pressure", "humidity", "windSpeed"]),
     weatherAttributes() {
       return [
@@ -57,17 +51,6 @@ export default {
           alt: "Pressure icon"
         }
       ];
-    }
-  },
-  methods: {
-    getWeatherByCoords() {
-      this.$store.commit("getWeatherByCoords", this.location);
-    },
-    getWeatherByCity() {
-      this.$store.commit("getWeatherByCity", this.city);
-    },
-    changeMetricSystem() {
-      this.$store.commit("changeMetricSystem");
     }
   },
 

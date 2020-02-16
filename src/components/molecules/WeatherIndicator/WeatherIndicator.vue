@@ -20,4 +20,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src='./WeatherIndicator.scss' />
+<style lang="scss" scoped src="./WeatherIndicator.scss" />
