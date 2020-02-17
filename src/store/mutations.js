@@ -55,6 +55,7 @@ const mutations = {
         state.forecast = res.data.list;
       })
       .catch(err => {
+        state.notFound = true;
         console.log('An error occured: ', err);
       });
   },
@@ -68,6 +69,7 @@ const mutations = {
         state.forecast = res.data.list;
       })
       .catch(err => {
+        state.notFound = true;
         console.log('An error occured: ', err);
       });
   },

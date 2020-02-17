@@ -55,6 +55,7 @@ html {
 }
 body {
 	font-size: 1.6rem;
+	background: $background;
 }
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
@@ -66,12 +67,12 @@ body {
 input {
 	&:focus {
 		outline: 0;
-		border: 2px solid $textgrey;
+		box-shadow: 0 0px 16px #0005;
 	}
 }
 button {
 	&:focus {
 		outline: 0;
-		border: 2px solid $textgrey;
+		box-shadow: 0 0px 16px #0005;
 	}
 }

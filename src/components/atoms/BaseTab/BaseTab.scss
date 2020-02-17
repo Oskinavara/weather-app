@@ -4,8 +4,17 @@
   font-size: 18px;
   color: $background;
   height: 4rem;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &--active {
+    opacity: 1;
+  }
 
   &:focus {
-    border: 2px solid $background;
+    border: 2px solid $blue !important;
   }
 }

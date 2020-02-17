@@ -2,8 +2,7 @@
   <header class="header">
     <TabMenu />
     <UserActions />
-    <!-- <CityInformation v-if="!notFound && !initialScreen" /> -->
-    <CityInformation />
+    <CityInformation v-if="!$store.state.notFound" />
   </header>
 </template>
 
@@ -11,7 +10,6 @@
 import TabMenu from '@/components/molecules/TabMenu/TabMenu.vue';
 import UserActions from '@/components/organisms/UserActions/UserActions.vue';
 import CityInformation from '@/components/molecules/CityInformation/CityInformation.vue';
-import { mapState } from 'vuex';
 
 export default {
   name: 'TheHeader',
@@ -19,9 +17,6 @@ export default {
     UserActions,
     TabMenu,
     CityInformation
-  },
-  computed: {
-    ...mapState(['notFound', 'initialScreen'])
   }
 };
 </script>

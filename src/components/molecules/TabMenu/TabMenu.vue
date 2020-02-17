@@ -1,11 +1,7 @@
 <template>
   <div class="tab-menu">
-    <BaseTab @click.native="$store.commit('setActivePage', 'Weather')">
-      Current weather
-    </BaseTab>
-    <BaseTab @click.native="$store.commit('setActivePage', 'Forecast')">
-      Forecast
-    </BaseTab>
+    <BaseTab tab="Weather" />
+    <BaseTab tab="Forecast" />
   </div>
 </template>
 

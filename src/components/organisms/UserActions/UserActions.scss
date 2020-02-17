@@ -1,6 +1,16 @@
 .user-actions {
+  padding: 1rem 1.5rem;
+  background: $background;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
+  justify-content: center;
+  width: auto;
+
+  .base-button {
+    margin: 0 0.2rem;
+
+    &:last-of-type {
+      margin: 0 0 0 0.2rem;
+    }
+  }
 }

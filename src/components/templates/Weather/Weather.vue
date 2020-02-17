@@ -1,22 +1,18 @@
 <template>
   <div class="weather">
     <div class="weather__wrapper">
-      <template v-if="!notFound">
-        <WeatherIndicator />
-        <WeatherAttribute
-          v-for="attribute in weatherAttributes"
-          :key="attribute.name"
-          :attribute="attribute"
-        />
-      </template>
-      <CityNotFound v-else />
+      <WeatherIndicator />
+      <WeatherAttribute
+        v-for="attribute in weatherAttributes"
+        :key="attribute.name"
+        :attribute="attribute"
+      />
     </div>
     <History />
   </div>
 </template>
 
 <script>
-import CityNotFound from '@/components/molecules/CityNotFound/CityNotFound.vue';
 import WeatherAttribute from '@/components/molecules/WeatherAttribute/WeatherAttribute.vue';
 import History from '@/components/organisms/History/History.vue';
 import WeatherIndicator from '@/components/molecules/WeatherIndicator/WeatherIndicator.vue';
@@ -26,7 +22,6 @@ import { mapState, mapGetters } from 'vuex';
 export default {
   name: 'Weather',
   components: {
-    CityNotFound,
     WeatherAttribute,
     WeatherIndicator,
     History

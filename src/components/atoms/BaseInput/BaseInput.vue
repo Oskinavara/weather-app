@@ -42,7 +42,7 @@ export default {
     },
     inputLabel() {
       if (!this.value) {
-        return 'City or Coordinates';
+        return 'City';
       }
       if (this.inputType === 'number') {
         return 'Coordinates';
