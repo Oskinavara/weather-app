@@ -1,0 +1,11 @@
+.base-tab {
+  background: $blue;
+  border: none;
+  font-size: 18px;
+  color: $background;
+  height: 4rem;
+
+  &:focus {
+    border: 2px solid $background;
+  }
+}

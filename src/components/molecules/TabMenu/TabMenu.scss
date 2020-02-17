@@ -1,0 +1,11 @@
+.tab-menu {
+  display: flex;
+
+  .base-tab {
+    width: 50%;
+
+    &:first-of-type {
+      border-right: 2px solid $background;
+    }
+  }
+}

@@ -79,6 +79,9 @@ const mutations = {
     state.unitSystem === 'Imperial'
       ? (state.unitSystem = 'Metric')
       : (state.unitSystem = 'Imperial');
+  },
+  setActivePage(state, page) {
+    state.activePage = page;
   }
 };
 
