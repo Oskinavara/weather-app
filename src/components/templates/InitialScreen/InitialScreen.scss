@@ -1,6 +1,11 @@
 .initial-screen {
   height: calc(100vh - 11.7rem);
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 0 1.5rem;
   top: 11.7rem;
   z-index: 2;
@@ -11,15 +16,26 @@
     font-weight: 600;
     color: $textgrey;
     padding-bottom: 2rem;
+
+    @include media-md {
+      font-size: 42px;
+      line-height: 50px;
+    }
   }
 
   &__description {
     font-size: 18px;
     color: $textgrey;
     line-height: 24px;
+
+    @include media-md {
+      font-size: 28px;
+      line-height: 36px;
+    }
   }
 
   &__image {
     padding: 2rem;
+    max-height: 50vh;
   }
 }
