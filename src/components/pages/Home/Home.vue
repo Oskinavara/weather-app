@@ -14,8 +14,9 @@
       <CityNotFound v-else />
       <div class="home__day" v-for="(day, index) in forecastDays" :key="index">
         <div class="home__item" v-for="(item, index2) in day" :key="index2">
-          <span class="home__temp">{{ temperature(item) }}</span>
-          <span class="home__hour">{{ item.dt_txt.substring(11, 16) }}</span>
+          <p class="home__temp">{{ temperature(item) }}</p>
+          <img :src="weatherIcon(item)" alt="">
+          <p class="home__hour">{{ item.dt_txt.substring(11, 16) }}</p>
         </div>
       </div>
     </div>
@@ -52,19 +53,16 @@ export default {
       'windSpeed',
       'latitude',
       'longitude',
-      'temperature'
+      'temperature',
+      'weatherIcon'
     ]),
     forecastDays() {
-      this.$nextTick(() => {
-        let forecastDays = [];
-        // let forecast = this.forecast;
-        let size = 8;
-        for (let i = 0; i < this.forecast && this.forecast.length; i = i + size)
-          forecastDays.push(this.forecast.slice(i, i + size));
-
-        return forecastDays;
-      })
-      return ''
+      let forecastDays = [];
+      // let forecast = this.forecast;
+      let size = 8;
+      for (let i = 0; i < this.forecast.length; i = i + size)
+        forecastDays.push(this.forecast.slice(i, i + size));
+      return forecastDays;
     },
     weatherAttributes() {
       return [

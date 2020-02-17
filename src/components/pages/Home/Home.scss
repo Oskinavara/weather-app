@@ -13,10 +13,17 @@
 
   &__day {
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    padding: 1rem 0;
   }
 
   &__item {
-    width: 25%;
+    // width: 40%;
+    margin: 0 1rem;
+    min-width: 8rem;
+  }
+
+  &__temp {
+    margin-right: 1rem;
   }
 }
