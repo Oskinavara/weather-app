@@ -1,5 +1,5 @@
 .forecast-day {
-  padding: 2rem 0;
+  padding-bottom: 3rem;
 
   &__heading {
     font-size: 18px;
@@ -10,5 +10,9 @@
   &__wrapper {
     overflow-x: auto;
     display: flex;
+
+    @include media-md {
+      justify-content: center;
+    }
   }
 }

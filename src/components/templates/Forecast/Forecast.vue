@@ -3,7 +3,6 @@
     <ForecastDay
       v-for="(day, index) in forecastData"
       :key="index"
-      class="home__day"
       :dayData="day"
       :dayHeading="daysHeadings[index]"
     />
@@ -20,14 +19,16 @@ export default {
     ForecastDay
   },
   computed: {
-    ...mapGetters(['temperature', 'weatherIcon']),
+    ...mapGetters(['temperature', 'weatherIcon', 'forecast']),
     forecastData() {
-      let forecastData = [];
-      let forecast = this.$store.state.forecast;
-      let hours = 8;
-      for (let i = 0; i < forecast.length; i = i + hours)
-        forecastData.push(forecast.slice(i, i + hours));
-      return forecastData;
+      if (this.forecast) {
+        let forecastData = [];
+        let forecast = this.forecast && this.forecast.list;
+        let hours = 8;
+        for (let i = 0; i < forecast.length; i = i + hours)
+          forecastData.push(forecast.slice(i, i + hours));
+        return forecastData;
+      } else return null;
     },
     daysHeadings() {
       return [
