@@ -7,8 +7,48 @@
   left: 0;
   right: 0;
   overflow-y: auto;
+  max-width: $layout-width--desktop;
+  margin: 0 auto;
 
   &__bottom {
-    padding-top: 16rem;
+    &--mobile {
+      padding-top: 16rem;
+      @include media-md {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+      padding-top: 16rem;
+
+      @include media-md {
+        display: block;
+      }
+
+      @include media-xl {
+        display: flex;
+        justify-content: space-between;
+        padding: 16rem 3rem 0;
+      }
+
+      .weather {
+        @include media-xl {
+          width: 40%;
+        }
+      }
+
+      .forecast {
+        @include media-xl {
+          width: 55%;
+        }
+      }
+    }
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
 }

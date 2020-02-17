@@ -52,7 +52,7 @@ const mutations = {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=b48493f02664a91b20a3fd845b9f9ff3`
       )
       .then(res => {
-        state.forecast = res.data.list;
+        state.forecast = res.data;
       })
       .catch(err => {
         state.notFound = true;
@@ -66,7 +66,7 @@ const mutations = {
         `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=b48493f02664a91b20a3fd845b9f9ff3`
       )
       .then(res => {
-        state.forecast = res.data.list;
+        state.forecast = res.data;
       })
       .catch(err => {
         state.notFound = true;

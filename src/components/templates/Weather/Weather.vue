@@ -2,11 +2,13 @@
   <div class="weather">
     <div class="weather__wrapper">
       <WeatherIndicator />
-      <WeatherAttribute
-        v-for="attribute in weatherAttributes"
-        :key="attribute.name"
-        :attribute="attribute"
-      />
+      <div class="weather__attribute-wrapper">
+        <WeatherAttribute
+          v-for="attribute in weatherAttributes"
+          :key="attribute.name"
+          :attribute="attribute"
+        />
+      </div>
     </div>
     <History />
   </div>
@@ -14,8 +16,8 @@
 
 <script>
 import WeatherAttribute from '@/components/molecules/WeatherAttribute/WeatherAttribute.vue';
-import History from '@/components/organisms/History/History.vue';
 import WeatherIndicator from '@/components/molecules/WeatherIndicator/WeatherIndicator.vue';
+import History from '@/components/organisms/History/History.vue';
 import IconUrls from '@/logic/mixins/IconUrls.js';
 import { mapState, mapGetters } from 'vuex';
 
@@ -51,17 +53,9 @@ export default {
           alt: 'Pressure icon'
         }
       ];
-    },
-    forecastDays() {
-      let forecastDays = [];
-      // let forecast = this.forecast;
-      let size = 8;
-      for (let i = 0; i < this.forecast.length; i = i + size)
-        forecastDays.push(this.forecast.slice(i, i + size));
-      return forecastDays;
     }
   }
 };
 </script>
 
-<style lang="scss" scoped src="./Weather.scss" />
+<style lang="scss" src="./Weather.scss" />

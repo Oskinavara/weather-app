@@ -51,9 +51,13 @@ const getters = {
       : Math.abs(longitudeConverted) + ' W'
   },
   
-  weatherIcon: state => location =>{
+  weatherIcon: state => location => {
     let icon = location && location.weather && location.weather[0] && location.weather[0].icon;
     return `http://openweathermap.org/img/wn/${icon}@2x.png`
+  },
+
+  forecast: state => {
+    return state.forecast;
   }
 };
 export default getters;

@@ -2,13 +2,22 @@
   <div class="home">
     <Header />
     <InitialScreen v-if="!weather" />
-    <div class="home__bottom" v-else>
-      <component
-        v-if="!notFound"
-        :is="$store.state.activePage === 'Weather' ? 'Weather' : 'Forecast'"
-      />
-      <CityNotFound v-else />
-    </div>
+    <template v-else>
+      <div class="home__bottom--mobile">
+        <template v-if="!notFound">
+          <component
+            :is="$store.state.activePage === 'Weather' ? 'Weather' : 'Forecast'"
+          />
+        </template>
+        <CityNotFound v-else />
+      </div>
+      <div class="home__bottom--desktop">
+        <Weather />
+        <CityNotFound v-if="notFound" />
+        <Forecast />
+      </div>
+    </template>
+    <History />
   </div>
 </template>
 
@@ -16,6 +25,7 @@
 import Header from '@/components/organisms/TheHeader/TheHeader.vue';
 import Weather from '@/components/templates/Weather/Weather.vue';
 import InitialScreen from '@/components/templates/InitialScreen/InitialScreen.vue';
+import History from '@/components/organisms/History/History.vue';
 import Forecast from '@/components/templates/Forecast/Forecast.vue';
 import CityNotFound from '@/components/molecules/CityNotFound/CityNotFound.vue';
 
@@ -28,7 +38,8 @@ export default {
     InitialScreen,
     Weather,
     Forecast,
-    CityNotFound
+    CityNotFound,
+    History
   },
   computed: {
     ...mapState(['weather', 'notFound'])
