@@ -1,5 +1,6 @@
 .city-not-found {
   padding: 0 1.5rem;
+  width: 100%;
   
   &__heading {
     font-size: 18px;
@@ -8,11 +9,32 @@
     padding: 40% 0 1rem 0;
     letter-spacing: 1px;
     line-height: 22px;
+
+    @include media-xs {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    @include media-md {
+      font-size: 30px;
+      line-height: 40px;
+      padding: 10% 0 3rem 0;
+    }
   }
 
   &__paragraph {
     font-size: 14px;
     color: $textgrey;
     line-height: 20px;
+
+    @include media-xs {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    @include media-md {
+      font-size: 24px;
+      line-height: 30px;
+    }
   }
 }

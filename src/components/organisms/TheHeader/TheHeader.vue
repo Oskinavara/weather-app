@@ -2,7 +2,7 @@
   <header class="header">
     <TabMenu />
     <UserActions />
-    <CityInformation v-if="!$store.state.notFound" />
+    <CityInformation v-if="!$store.state.notFound && $store.state.weather" />
   </header>
 </template>
 
