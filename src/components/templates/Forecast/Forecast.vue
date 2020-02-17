@@ -1,6 +1,5 @@
 <template>
   <div class="forecast">
-    <CityInformation />
     <ForecastDay
       v-for="(day, index) in forecastData"
       :key="index"
@@ -12,14 +11,12 @@
 </template>
 
 <script>
-import CityInformation from '@/components/molecules/CityInformation/CityInformation.vue';
 import ForecastDay from '@/components/organisms/ForecastDay/ForecastDay.vue';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Forecast',
   components: {
-    CityInformation,
     ForecastDay
   },
   computed: {

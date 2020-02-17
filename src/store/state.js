@@ -5,7 +5,8 @@ const state = {
   activePage: 'Weather',
   searchHistory: [],
   location: {},
-  notFound: false
+  notFound: false,
+  initialView: true
 };
 
 export default state;

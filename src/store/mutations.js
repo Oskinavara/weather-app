@@ -22,6 +22,7 @@ const mutations = {
         console.log('An error occured: ', err);
       });
   },
+
   getWeatherByCity(state, city) {
     axios
       .get(
@@ -44,6 +45,7 @@ const mutations = {
         console.log('An error occured: ', err);
       });
   },
+
   getForecastByCity(state, city) {
     axios
       .get(
@@ -56,6 +58,7 @@ const mutations = {
         console.log('An error occured: ', err);
       });
   },
+
   getForecastByCoords(state, coords) {
     axios
       .get(
@@ -68,6 +71,7 @@ const mutations = {
         console.log('An error occured: ', err);
       });
   },
+
   setLocation(state, coords) {
     state.location = {
       ...state.location,
@@ -75,11 +79,13 @@ const mutations = {
       longitude: coords.longitude
     };
   },
+
   changeUnitSystem(state) {
     state.unitSystem === 'Imperial'
       ? (state.unitSystem = 'Metric')
       : (state.unitSystem = 'Imperial');
   },
+
   setActivePage(state, page) {
     state.activePage = page;
   }

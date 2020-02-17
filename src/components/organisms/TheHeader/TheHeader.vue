@@ -1,31 +1,27 @@
 <template>
   <header class="header">
-    <BaseInput @input="updateValue" :value="city" />
-    <BaseButton action="search" :city="city" />
-    <BaseButton action="localize" />
-    <BaseButton action="unit" />
+    <TabMenu />
+    <UserActions />
+    <!-- <CityInformation v-if="!notFound && !initialScreen" /> -->
+    <CityInformation />
   </header>
 </template>
 
 <script>
-import BaseInput from '@/components/atoms/BaseInput/BaseInput.vue';
-import BaseButton from '@/components/atoms/BaseButton/BaseButton.vue';
+import TabMenu from '@/components/molecules/TabMenu/TabMenu.vue';
+import UserActions from '@/components/organisms/UserActions/UserActions.vue';
+import CityInformation from '@/components/molecules/CityInformation/CityInformation.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'TheHeader',
-  data() {
-    return {
-      city: ''
-    };
-  },
   components: {
-    BaseInput,
-    BaseButton
+    UserActions,
+    TabMenu,
+    CityInformation
   },
-  methods: {
-    updateValue(value) {
-      this.city = value;
-    }
+  computed: {
+    ...mapState(['notFound', 'initialScreen'])
   }
 };
 </script>
