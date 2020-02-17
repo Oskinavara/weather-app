@@ -22,6 +22,7 @@ const mutations = {
         console.log('An error occured: ', err);
       });
   },
+
   getWeatherByCity(state, city) {
     axios
       .get(
@@ -44,6 +45,35 @@ const mutations = {
         console.log('An error occured: ', err);
       });
   },
+
+  getForecastByCity(state, city) {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=b48493f02664a91b20a3fd845b9f9ff3`
+      )
+      .then(res => {
+        state.forecast = res.data.list;
+      })
+      .catch(err => {
+        state.notFound = true;
+        console.log('An error occured: ', err);
+      });
+  },
+
+  getForecastByCoords(state, coords) {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=b48493f02664a91b20a3fd845b9f9ff3`
+      )
+      .then(res => {
+        state.forecast = res.data.list;
+      })
+      .catch(err => {
+        state.notFound = true;
+        console.log('An error occured: ', err);
+      });
+  },
+
   setLocation(state, coords) {
     state.location = {
       ...state.location,
@@ -51,10 +81,15 @@ const mutations = {
       longitude: coords.longitude
     };
   },
+
   changeUnitSystem(state) {
     state.unitSystem === 'Imperial'
       ? (state.unitSystem = 'Metric')
       : (state.unitSystem = 'Imperial');
+  },
+
+  setActivePage(state, page) {
+    state.activePage = page;
   }
 };
 

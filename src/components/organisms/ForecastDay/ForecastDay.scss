@@ -1,0 +1,14 @@
+.forecast-day {
+  padding: 2rem 0;
+
+  &__heading {
+    font-size: 18px;
+    padding-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  &__wrapper {
+    overflow-x: auto;
+    display: flex;
+  }
+}

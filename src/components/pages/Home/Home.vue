@@ -1,83 +1,37 @@
 <template>
   <div class="home">
-    <div class="home__wrapper">
-      <Header />
-      <template v-if="!notFound">
-        <CityInformation />
-        <WeatherIndicator />
-        <WeatherAttribute
-          v-for="attribute in weatherAttributes"
-          :key="attribute.name"
-          :attribute="attribute"
-        />
-      </template>
+    <Header />
+    <InitialScreen v-if="!weather" />
+    <div class="home__bottom" v-else>
+      <component
+        v-if="!notFound"
+        :is="$store.state.activePage === 'Weather' ? 'Weather' : 'Forecast'"
+      />
       <CityNotFound v-else />
     </div>
-    <History />
   </div>
 </template>
 
 <script>
 import Header from '@/components/organisms/TheHeader/TheHeader.vue';
-import CityInformation from '@/components/molecules/CityInformation/CityInformation.vue';
+import Weather from '@/components/templates/Weather/Weather.vue';
+import InitialScreen from '@/components/templates/InitialScreen/InitialScreen.vue';
+import Forecast from '@/components/templates/Forecast/Forecast.vue';
 import CityNotFound from '@/components/molecules/CityNotFound/CityNotFound.vue';
-import History from '@/components/organisms/History/History.vue';
-import WeatherAttribute from '@/components/molecules/WeatherAttribute/WeatherAttribute.vue';
-import WeatherIndicator from '@/components/molecules/WeatherIndicator/WeatherIndicator.vue';
-import IconUrls from '@/logic/mixins/IconUrls.js';
-import { mapState, mapGetters } from 'vuex';
+
+import { mapState } from 'vuex';
 
 export default {
   name: 'Home',
   components: {
     Header,
-    WeatherAttribute,
-    History,
-    WeatherIndicator,
-    CityInformation,
+    InitialScreen,
+    Weather,
+    Forecast,
     CityNotFound
   },
-  mixins: [IconUrls],
   computed: {
-    ...mapState(['notFound']),
-    ...mapGetters([
-      'pressure',
-      'humidity',
-      'windSpeed',
-      'latitude',
-      'longitude'
-    ]),
-    weatherAttributes() {
-      return [
-        {
-          name: 'Humidity',
-          value: this.humidity,
-          src: this.humidityIcon,
-          alt: 'Humidity icon'
-        },
-        {
-          name: 'Wind speed',
-          value: this.windSpeed,
-          src: this.windIcon,
-          alt: 'Wind icon'
-        },
-        {
-          name: 'Pressure',
-          value: this.pressure,
-          src: this.pressureIcon,
-          alt: 'Pressure icon'
-        }
-      ];
-    }
-  },
-
-  beforeMount() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        this.$store.commit('setLocation', pos.coords);
-        this.$store.commit('getWeatherByCoords', pos.coords);
-      });
-    }
+    ...mapState(['weather', 'notFound'])
   }
 };
 </script>

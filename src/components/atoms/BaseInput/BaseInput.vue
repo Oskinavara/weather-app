@@ -32,6 +32,7 @@ export default {
     handleKeyup() {
       if (this.value) {
         this.$store.commit('getWeatherByCity', this.value);
+        this.$store.commit('getForecastByCity', this.value);
       }
     }
   },
@@ -41,7 +42,7 @@ export default {
     },
     inputLabel() {
       if (!this.value) {
-        return 'City or Coordinates';
+        return 'City';
       }
       if (this.inputType === 'number') {
         return 'Coordinates';
