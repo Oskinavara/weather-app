@@ -1,0 +1,9 @@
+.tab-menu {
+  background: $background;
+  display: flex;
+  justify-content: space-between;
+
+  .base-tab {
+    width: calc(50% - 1px);
+  }
+}

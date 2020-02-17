@@ -6,10 +6,20 @@
 
 <script>
 import Home from '@/components/pages/Home/Home.vue';
+
 export default {
   name: 'App',
   components: {
     Home
+  },
+  beforeMount() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        this.$store.commit('setLocation', pos.coords);
+        this.$store.commit('getWeatherByCoords', pos.coords);
+        this.$store.commit('getForecastByCoords', pos.coords);
+      });
+    }
   }
 };
 </script>

@@ -61,9 +61,11 @@ export default {
   methods: {
     getWeatherByCoords() {
       this.$store.commit('getWeatherByCoords', this.location);
+      this.$store.commit('getForecastByCoords', this.location);
     },
     getWeatherByCity() {
       this.$store.commit('getWeatherByCity', this.city);
+      this.$store.commit('getForecastByCity', this.city);
     },
     changeUnitSystem() {
       this.$store.commit('changeUnitSystem');

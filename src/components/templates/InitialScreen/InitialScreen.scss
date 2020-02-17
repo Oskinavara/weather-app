@@ -1,0 +1,25 @@
+.initial-screen {
+  height: calc(100vh - 11.7rem);
+  position: fixed;
+  padding: 0 1.5rem;
+  top: 11.7rem;
+  z-index: 2;
+  background: $background;
+
+  &__title {
+    font-size: 30px;
+    font-weight: 600;
+    color: $textgrey;
+    padding-bottom: 2rem;
+  }
+
+  &__description {
+    font-size: 18px;
+    color: $textgrey;
+    line-height: 24px;
+  }
+
+  &__image {
+    padding: 2rem;
+  }
+}
