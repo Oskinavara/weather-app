@@ -1,23 +1,27 @@
 <template>
   <div class="home">
-    <Header />
-    <InitialScreen v-if="!weather" />
-    <template v-else>
-      <div class="home__bottom--mobile">
-        <template v-if="!notFound">
-          <component
-            :is="$store.state.activePage === 'Weather' ? 'Weather' : 'Forecast'"
-          />
-        </template>
-        <CityNotFound v-else />
-      </div>
-      <div class="home__bottom--desktop">
-        <Weather />
-        <CityNotFound v-if="notFound" />
-        <Forecast />
-      </div>
-    </template>
-    <History />
+    <div class="home__inner">
+      <Header />
+      <InitialScreen v-if="!weather" />
+      <template v-else>
+        <div class="home__bottom--mobile">
+          <template v-if="!notFound">
+            <component
+              :is="
+                $store.state.activePage === 'Weather' ? 'Weather' : 'Forecast'
+              "
+            />
+          </template>
+          <CityNotFound v-else />
+        </div>
+        <div class="home__bottom--desktop">
+          <Weather />
+          <CityNotFound v-if="notFound" />
+          <Forecast />
+        </div>
+      </template>
+      <History />
+    </div>
   </div>
 </template>
 

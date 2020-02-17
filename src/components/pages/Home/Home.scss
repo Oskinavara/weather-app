@@ -7,8 +7,12 @@
   left: 0;
   right: 0;
   overflow-y: auto;
-  max-width: $layout-width--desktop;
   margin: 0 auto;
+
+  &__inner {
+    max-width: $layout-width--desktop;
+    margin: 0 auto;
+  }
 
   &__bottom {
     &--mobile {
@@ -45,10 +49,5 @@
       }
     }
   }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  -ms-overflow-style: none;
+  
 }
