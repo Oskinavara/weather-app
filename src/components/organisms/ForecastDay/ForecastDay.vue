@@ -1,10 +1,13 @@
 <template>
   <div class="forecast-day">
-    <ForecastHour
-      v-for="(hour, index) in dayData"
-      :key="index"
-      :hourData="hour"
-    />
+    <h3 class="forecast-day__heading">{{ dayHeading }}</h3>
+    <div class="forecast-day__wrapper">
+      <ForecastHour
+        v-for="(hour, index) in dayData"
+        :key="index"
+        :hourData="hour"
+      />
+    </div>
   </div>
 </template>
 
@@ -16,11 +19,15 @@ export default {
     dayData: {
       type: Array,
       required: true
+    },
+    dayHeading: {
+      type: String,
+      required: true
     }
   },
   components: {
-    ForecastHour,
-  },
+    ForecastHour
+  }
 };
 </script>
 
