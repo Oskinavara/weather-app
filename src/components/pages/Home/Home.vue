@@ -15,9 +15,11 @@
           <CityNotFound v-else />
         </div>
         <div class="home__bottom--desktop">
-          <Weather />
-          <CityNotFound v-if="notFound" />
-          <Forecast />
+          <template v-if="!notFound">
+            <Weather />
+            <Forecast />
+          </template>
+          <CityNotFound v-else />
         </div>
       </template>
       <History />
