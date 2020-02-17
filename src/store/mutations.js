@@ -44,6 +44,30 @@ const mutations = {
         console.log('An error occured: ', err);
       });
   },
+  getForecastByCity(state, city) {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=b48493f02664a91b20a3fd845b9f9ff3`
+      )
+      .then(res => {
+        state.forecast = res.data.list;
+      })
+      .catch(err => {
+        console.log('An error occured: ', err);
+      });
+  },
+  getForecastByCoords(state, coords) {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=b48493f02664a91b20a3fd845b9f9ff3`
+      )
+      .then(res => {
+        state.forecast = res.data.list;
+      })
+      .catch(err => {
+        console.log('An error occured: ', err);
+      });
+  },
   setLocation(state, coords) {
     state.location = {
       ...state.location,

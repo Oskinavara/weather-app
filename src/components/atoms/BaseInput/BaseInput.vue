@@ -32,6 +32,7 @@ export default {
     handleKeyup() {
       if (this.value) {
         this.$store.commit('getWeatherByCity', this.value);
+        this.$store.commit('getForecastByCity', this.value);
       }
     }
   },
