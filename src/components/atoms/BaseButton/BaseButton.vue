@@ -75,9 +75,8 @@ export default {
         navigator.geolocation.getCurrentPosition(
           pos => {
             this.$store.commit('setLocation', pos.coords);
-            this.$store.commit('getWeatherByCoords', pos.coords);
           },
-          errorObj => alert(errorObj.code + ': ' + errorObj.message)
+          error => console.log(error.code + ': ' + error.message)
         );
         this.getWeatherByCoords();
       } else {
