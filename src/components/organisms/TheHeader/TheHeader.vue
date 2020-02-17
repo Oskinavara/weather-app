@@ -1,31 +1,22 @@
 <template>
   <header class="header">
-    <BaseInput @input="updateValue" :value="city" />
-    <BaseButton action="search" :city="city" />
-    <BaseButton action="localize" />
-    <BaseButton action="unit" />
+    <TabMenu />
+    <UserActions />
+    <CityInformation v-if="!$store.state.notFound" />
   </header>
 </template>
 
 <script>
-import BaseInput from "@/components/atoms/BaseInput/BaseInput.vue";
-import BaseButton from "@/components/atoms/BaseButton/BaseButton.vue";
+import TabMenu from '@/components/molecules/TabMenu/TabMenu.vue';
+import UserActions from '@/components/organisms/UserActions/UserActions.vue';
+import CityInformation from '@/components/molecules/CityInformation/CityInformation.vue';
 
 export default {
-  name: "TheHeader",
-  data() {
-    return {
-      city: ""
-    };
-  },
+  name: 'TheHeader',
   components: {
-    BaseInput,
-    BaseButton
-  },
-  methods: {
-    updateValue(value) {
-      this.city = value;
-    }
+    UserActions,
+    TabMenu,
+    CityInformation
   }
 };
 </script>

@@ -1,0 +1,48 @@
+.weather {
+  &__wrapper {
+    padding: 0 1.5rem;
+
+    @include media-md {
+      padding-bottom: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @include media-xl {
+      display: block;
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__attribute-wrapper {
+    @include media-md {
+      width: 45%;
+    }
+
+    @include media-xl {
+      width: 100%;
+    }
+  }
+
+  .history {
+    display: none;
+    max-height: unset;
+
+    @include media-xl {
+      display: block;
+      position: static;
+      width: 100%;
+    }
+
+    &-location {
+      @include media-xl {
+        &:not(:last-of-type) {
+          border-top: 1px solid $textgrey;
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}

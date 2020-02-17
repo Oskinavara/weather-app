@@ -1,85 +1,52 @@
 <template>
   <div class="home">
-    <Header />
-    <template v-if="!notFound">
-      <CityInformation />
-      <WeatherIndicator />
-      <WeatherAttribute
-        v-for="attribute in weatherAttributes"
-        :key="attribute.name"
-        :attribute="attribute"
-      />
-    </template>
-    <CityNotFound v-else />
+    <div class="home__inner">
+      <Header />
+      <InitialScreen v-if="!weather" />
+      <template v-else>
+        <div class="home__bottom--mobile">
+          <template v-if="!notFound">
+            <component
+              :is="
+                $store.state.activePage === 'Weather' ? 'Weather' : 'Forecast'
+              "
+            />
+          </template>
+          <CityNotFound v-else />
+        </div>
+        <div class="home__bottom--desktop">
+          <Weather />
+          <CityNotFound v-if="notFound" />
+          <Forecast />
+        </div>
+      </template>
+      <History />
+    </div>
   </div>
 </template>
 
 <script>
 import Header from '@/components/organisms/TheHeader/TheHeader.vue';
-import CityInformation from '@/components/molecules/CityInformation/CityInformation.vue';
+import Weather from '@/components/templates/Weather/Weather.vue';
+import InitialScreen from '@/components/templates/InitialScreen/InitialScreen.vue';
+import History from '@/components/organisms/History/History.vue';
+import Forecast from '@/components/templates/Forecast/Forecast.vue';
 import CityNotFound from '@/components/molecules/CityNotFound/CityNotFound.vue';
-import WeatherAttribute from '@/components/molecules/WeatherAttribute/WeatherAttribute.vue';
-import WeatherIndicator from '@/components/molecules/WeatherIndicator/WeatherIndicator.vue';
-import IconUrls from '@/logic/mixins/IconUrls.js';
-import { mapState, mapGetters } from 'vuex';
+
+import { mapState } from 'vuex';
 
 export default {
   name: 'Home',
   components: {
     Header,
-    WeatherAttribute,
-    WeatherIndicator,
-    CityInformation,
-    CityNotFound
+    InitialScreen,
+    Weather,
+    Forecast,
+    CityNotFound,
+    History
   },
-  mixins: [IconUrls],
   computed: {
-    ...mapState([
-      'weather',
-      'location',
-      'searchHistory',
-      'unitSystem',
-      'notFound'
-    ]),
-    ...mapGetters([
-      'temperature',
-      'pressure',
-      'humidity',
-      'windSpeed',
-      'latitude',
-      'longitude'
-    ]),
-    weatherAttributes() {
-      return [
-        {
-          name: 'Humidity',
-          value: this.humidity,
-          src: this.humidityIcon,
-          alt: 'Humidity icon'
-        },
-        {
-          name: 'Wind speed',
-          value: this.windSpeed,
-          src: this.windIcon,
-          alt: 'Wind icon'
-        },
-        {
-          name: 'Pressure',
-          value: this.pressure,
-          src: this.pressureIcon,
-          alt: 'Pressure icon'
-        }
-      ];
-    }
-  },
-
-  beforeMount() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        this.$store.commit('setLocation', pos.coords);
-        this.$store.commit('getWeatherByCoords', pos.coords);
-      });
-    }
+    ...mapState(['weather', 'notFound'])
   }
 };
 </script>

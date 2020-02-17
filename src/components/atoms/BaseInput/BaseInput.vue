@@ -4,7 +4,7 @@
     <input
       id="search"
       name="search"
-      :type="inputType"
+      type="search"
       placeholder="Search"
       @input="updateValue($event.target.value)"
       @keyup.enter="handleKeyup"
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
   name: 'BaseInput',
   props: {
@@ -33,17 +32,17 @@ export default {
     handleKeyup() {
       if (this.value) {
         this.$store.commit('getWeatherByCity', this.value);
+        this.$store.commit('getForecastByCity', this.value);
       }
     }
   },
   computed: {
-    ...mapState(['location']),
     inputType() {
       return isNaN(this.value[0]) ? 'search' : 'number';
     },
     inputLabel() {
       if (!this.value) {
-        return 'City or Coordinates';
+        return 'City';
       }
       if (this.inputType === 'number') {
         return 'Coordinates';

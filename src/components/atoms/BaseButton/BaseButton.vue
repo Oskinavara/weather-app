@@ -61,9 +61,11 @@ export default {
   methods: {
     getWeatherByCoords() {
       this.$store.commit('getWeatherByCoords', this.location);
+      this.$store.commit('getForecastByCoords', this.location);
     },
     getWeatherByCity() {
       this.$store.commit('getWeatherByCity', this.city);
+      this.$store.commit('getForecastByCity', this.city);
     },
     changeUnitSystem() {
       this.$store.commit('changeUnitSystem');
@@ -71,7 +73,13 @@ export default {
     handleClick() {
       if (this.action === 'search') {
         this.getWeatherByCity();
-      } else if (this.action === 'localize') {
+      } else if (this.action === 'localize' && 'geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            this.$store.commit('setLocation', pos.coords);
+          },
+          error => console.log(error.code + ': ' + error.message)
+        );
         this.getWeatherByCoords();
       } else {
         this.changeUnitSystem();

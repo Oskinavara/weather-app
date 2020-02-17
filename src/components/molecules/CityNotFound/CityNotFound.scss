@@ -1,9 +1,11 @@
 .city-not-found {
+  padding: 0 1.5rem;
+  
   &__heading {
     font-size: 18px;
     font-weight: bold;
     color: $textgrey;
-    padding: 50% 0 1rem 0;
+    padding: 40% 0 1rem 0;
     letter-spacing: 1px;
     line-height: 22px;
   }
